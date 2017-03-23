@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js">
+<head th:utext="${headContent}">
+  <meta charset="utf-8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <title>chuangao background</title>
+  
+  <link rel="stylesheet" href="../static/assets/css/amazeui.min.css"></link>
+  <link rel="stylesheet" href="../static/assets/css/admin.css"></link>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，网站暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header" th:utext="${headerContent}">
+  <div class="am-topbar-brand">
+    <strong>创澳商务</strong> <small>交易者系统</small>
+  </div>  
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas" th:utext="${sideBarContent}">
+    sidebar here
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content" id="contentDiv" th:text="${hello}">
+	<!-- dynamic load information here -->
+	<button onclick="fillContentDiv('./chuangao_pages/users/traderWidgets/00 widget_UserInfo_Trader nohead.html');"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+    
+  </div>
+  <!-- content end -->
+
+</div>
+
+<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+  <span class="am-icon-btn am-icon-th-list"></span>
+</a>
+
+<footer th:utext="${footerContent}">
+  footer here
+	<script src="../static/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="../static/assets/js/amazeui.min.js"></script>
+	<script src="../static/assets/js/app.js"></script>
+</footer>
+
+</body>
+</html>

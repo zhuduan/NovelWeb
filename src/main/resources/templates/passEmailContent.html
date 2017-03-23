@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title>创澳商务 | 找回密码</title>  
+  <style>
+    .header {
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 200%;
+      color: #333;
+      margin-top: 30px;
+    }
+    .header p {
+      font-size: 14px;
+    }
+	
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="am-g">
+    <h1>创澳商务功能服务系统</h1>
+    <p>www.mychuangao.com
+		<br/>
+	   同我们一起打造你的个人理财计划
+	</p>
+  </div>
+  <hr />
+  
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    <h3 style="text-align:center;">找回密码 </h3>
+	<hr />
+    <h4>尊敬的用户您好，感谢您使用我们的找回密码服务，请您点击下面的链接进行密码找回</h4>
+	<h4>如果链接无法点击，请您复制链接地址到浏览器中打开</h4>
+    <br/>
+	<p><a href="#" th:href="${desUrl}" target="_blank">点我找回密码</a></p>
+    <p>链接地址：&nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${desUrl}">url</span></p>
+	<br/>
+	<hr />
+    <p>© 2016 ChuangAo, Inc.</p>
+  </div>
+</div>
+
+</body>
+</html>

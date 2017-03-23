@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title>创澳商务 | 找回密码</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <style>
+    .header {
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 200%;
+      color: #333;
+      margin-top: 30px;
+    }
+    .header p {
+      font-size: 14px;
+    }
+	
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="am-g">
+    <h1>创澳商务功能服务系统</h1>
+    <p>www.mychuangao.com
+		<br/>
+	   同我们一起打造你的个人理财计划
+	</p>
+  </div>
+  <hr />
+  
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    <h3 style="text-align:center;">密码修改:
+		<span th:switch="${updateResult}">
+			<span th:case="-1" class="am-text-danger">失败</span>
+			<span th:case="0">未知</span>		
+			<span th:case="1" class="am-text-success">成功</span>											
+		</span>
+	</h3>
+	<h3 style="text-align:center;"><a href="/login">点击我重新登录</a></h3>   
+    <hr />
+    <p>© 2016 ChuangAo, Inc.</p>
+  </div>
+</div>
+
+</body>
+</html>

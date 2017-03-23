@@ -1,0 +1,151 @@
+﻿<!doctype html>
+<html class="no-js">
+<head th:utext="${headContent}">
+  <meta charset="utf-8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <title>chuangao trade Index</title>
+  
+  <link rel="stylesheet" href="../../static/assets/css/amazeui.min.css"></link>
+  <link rel="stylesheet" href="../../static/assets/css/admin.css"></link>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，网站暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header" th:utext="${headerContent}">
+  <div class="am-topbar-brand">
+    <strong>创澳商务</strong> <small>交易者系统</small>
+  </div>  
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas" th:utext="${sideBarContent}">
+    sidebar here
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content" id="contentDiv">
+	<div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>感谢使用本系统</small></div>
+    </div>
+	
+	<div class="am-g">
+      <div class="am-u-md-8">       
+        <div class="am-u-sm-12 am-u-sm-centered">
+			<h2>创澳商务交易者系统</h2>
+			<p>十分感谢您选择了我们的服务，如果有您再使用过程中由任何疑问，欢迎您联系管理员。</p>
+			<p>本系统主要用于对交易人员提供相关的支持，从而帮助您更好的形成自己的策略族，以实现更佳的盈利，最终实现双赢的目标。</p>
+			<p>在开始使用本系统前，您可以通过以下介绍来进一步了解我们所提供的功能服务。</p>
+			<hr/>
+		</div>
+		<div class="am-u-sm-12 am-u-md-10 am-u-md-pull-2">
+			<h3>网络跟单服务</h3>
+			<p>
+				该服务实现了通过互联网进行信号源的复制，您可以通过喊单程序来发布您的信号源，并通过跟单程序来选择您需要的信号进行交易的复制。
+			</p>
+			<p>
+				该服务需要MT4上的EA程序作为支持（详见下表），详情您可以通过导航栏上的网络跟单服务进行了解，或是咨询客服。
+				<ol>
+				  <li>发送端程序 <a href="">sender</a></li>
+				  <li>跟踪端程序 <a href="">receiver</a></li>
+				</ol>
+			</p>			
+			<hr/>
+			
+			<h3>在线监控服务</h3>
+			<p>
+				该服务可以帮助您直接通过网页对所有账户的在线状况进行监控，以及时发现掉线情况并解决，避免造成不必要的损失。
+			</p>
+			<p>
+				该服务所需EA已经集成在跟单服务程序中，如果您需要<strong>独立版本</strong>请先咨询客服，谢谢。
+				<ol>
+				  <li>发送端程序 <a href="">sender</a></li>
+				  <li>跟踪端程序 <a href="">receiver</a></li>
+				</ol>
+			</p>	
+			<hr/>		
+
+			<h3>数据统计服务</h3>
+			<p>
+				该服务会对您当前在线账号的数据进行统计，数据内容主要包含了当前账号的：总订单手数、最大/最小订单手数、总盈利数。
+			</p>
+			<p>
+				该服务所需EA已经集成在跟单服务程序中，如果您需要<strong>独立版本</strong>请先咨询客服，谢谢。
+				<ol>
+				  <li>发送端程序 <a href="">sender</a></li>
+				  <li>跟踪端程序 <a href="">receiver</a></li>
+				</ol>
+			</p>	
+			<hr/>		
+			
+			<h3>EA数据测试服务</h3>
+			<p>
+				针对MT4所提供的回测无法十分准确体现EA盈亏数据的问题，我们通过存储了大量的真实数据（精细度达到每个Tick），对您所提交的EA的
+				实际表现水平进行一个回测评估，从而提供最真实的盈利曲线。
+			</p>
+			<p>
+				该服务需提交您自己的EA程序到服务器（我们承诺不会私自散布和使用）后进行测试。		
+			</p>	
+			<p>
+				因为每个EA所需的计算资源不尽相同，且可能需要根据EA的具体执行方式来构建模拟条件，所以如果需要使用该服务的客户请先和客服联系。
+				我们会很乐于帮助您了解和使用本功能。
+			</p>	
+			<hr/>		
+			
+		</div>
+      </div>
+
+      <div class="am-u-md-4">
+            <div class="am-panel am-panel-default">
+			  <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">联系我们<span class="am-icon-chevron-down am-fr" ></span></div>
+			  <div id="collapse-panel-1" class="am-in">
+				<div class="am-panel-bd">					
+					<a href="http://wpa.qq.com/msgrd?V=3&amp;uin=2570278383&amp;Site=创澳商务&amp;Menu=yes&amp;from=discuz" target="_blank"><span class="am-icon-qq">QQ</span></a> &nbsp;&nbsp;
+					<a href="http://weibo.com/209403456?is_all=1" target="_blank"><span class="am-icon-weibo">微博</span></a>  &nbsp;&nbsp;
+					<a href="#" target="_blank"><span class="am-icon-send">邮箱</span></a>	&nbsp;&nbsp;					
+				</div>	
+			  </div>
+			</div>   
+			<div class="am-panel am-panel-default">
+			  <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-2'}">常用工具<span class="am-icon-chevron-down am-fr" ></span></div>
+			  <div id="collapse-panel-2" class="am-in">
+				<div class="am-panel-bd">					
+					<ul style="margin:0;">
+						<li>
+							<a href="https://www.exness.com/intl/zh/metatrader_4/" target="_blank"><i class="am-icon-cloud-download"></i></a>
+							MQT4
+						</li>
+						<li>
+							<a href="#"><i class="am-icon-cloud-download"></i></a>
+							Others								
+						</li>
+					</ul>					
+				</div>	
+			  </div>
+			</div>   
+      </div>
+    </div>	
+	
+  </div>
+  <!-- content end -->
+
+</div>
+
+<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+  <span class="am-icon-btn am-icon-th-list"></span>
+</a>
+
+<footer th:utext="${footerContent}">
+  footer here
+	<script src="../../static/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="../../static/assets/js/amazeui.min.js"></script>
+	<script src="../../static/assets/js/app.js"></script>
+</footer>
+
+</body>
+</html>

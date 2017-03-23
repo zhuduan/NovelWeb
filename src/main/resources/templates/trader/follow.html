@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html class="no-js">
+<head th:utext="${headContent}">
+  <meta charset="utf-8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <title>chuangao background</title>
+  
+  <link rel="stylesheet" href="../../static/assets/css/amazeui.min.css"></link>
+  <link rel="stylesheet" href="../../static/assets/css/admin.css"></link>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，网站暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header" th:utext="${headerContent}">
+  <div class="am-topbar-brand">
+    <strong>创澳商务</strong> <small>交易者系统</small>
+  </div>  
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas" th:utext="${sideBarContent}">
+    sidebar here
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content" id="contentDiv">
+	<!-- dynamic load information here -->
+	<div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">网络跟单</strong> / <small>权限一览及程序下载</small></div>
+    </div>
+
+    <ul class="am-avg-sm-1 am-avg-md-2 am-margin am-padding am-text-center admin-content-list ">
+      <li><a href="#" class="am-text-secondary" th:href="@{/MT4_EX/followSignalSender.ex4}"><span class="am-icon-btn am-icon-file-text"></span><br/>喊单程序<br/></a></li>
+      <li><a href="#" class="am-text-secondary" th:href="@{/MT4_EX/followSignalReceiver.ex4}"><span class="am-icon-btn am-icon-briefcase"></span><br/>跟单程序<br/></a></li>
+    </ul>
+
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <form class="am-form">
+          <table class="am-table am-table-striped am-table-hover table-main">
+            <thead>
+              <tr>
+				<th class="table-id">账号ID</th>
+				<th class="table-type">账号类型</th>
+				<th class="table-date">到期时间</th>
+				<th class="table-author">可复制信号源账号ID</th>
+				<th class="table-author">喊单时长</th>
+				<th class="table-author">跟单时长</th>
+              </tr>
+          </thead>
+          <tbody th:remove="all-but-first">
+			<tr th:each="follow : ${followList}" th:id="${follow.getAccountID()}">
+              <td th:text="${follow.getAccountID()}">1</td>
+			  <td th:switch="${follow.getAccountType()}">
+				<span th:case="1" class="am-text-danger">跟单账号</span>
+				<span th:case="2" class="am-text-warning">喊单账号</span>
+				<span th:case="3" class="am-text-success">跟单和喊单账号</span>
+			  </td>
+              <td th:text="${follow.getExpireTime()}">2014年9月4日 7:28:47</td>
+              <td th:text="${follow.getFollowAccount()}" id="followAccounts">{"ids":[{"id":7767180}]}</td>
+			  <td th:text="${follow.getAsSender()}">1</td>
+			  <td th:text="${follow.getAsReceiver()}">1</td>
+            </tr>
+            <tr>
+              <td><a href="#">1</a></td>
+              <td>跟单账号</td>
+              <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
+              <td class="am-hide-sm-only">ids</td>
+            </tr>
+          </tbody>
+        </table>
+          
+        <hr />
+        <p>注：如有疑问，请联系管理员~</p>
+        </form>
+      </div>
+
+    </div>
+	
+  </div>
+  <!-- content end -->
+
+</div>
+
+<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+  <span class="am-icon-btn am-icon-th-list"></span>
+</a>
+
+<footer th:utext="${footerContent}">
+  footer here
+	<script src="../../static/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="../../static/assets/js/amazeui.min.js"></script>
+	<script src="../../static/assets/js/app.js"></script>
+</footer>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){		
+			//dothings if needed
+			$("td#followAccounts").each(function(){
+				var AccountsContent = $(this).html();
+				var json = $.parseJSON(AccountsContent.toString());
+				var jsonArray = json.ids;
+				var result = "";
+				$.each(jsonArray, function(key,value) {
+					result = result + value.id + ",";
+				}); 
+				result = result.substr(0,result.length-1);
+				$(this).html(result);
+			});
+		
+		});
+		
+		
+		
+	</script>
+
+	
+</body>
+</html>

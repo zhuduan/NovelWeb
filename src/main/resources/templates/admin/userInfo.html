@@ -1,0 +1,169 @@
+﻿<!doctype html>
+<html class="no-js">
+<head th:utext="${headContent}">
+  <meta charset="utf-8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <title>chuangao trade Index</title>
+  
+  <link rel="stylesheet" href="../../static/assets/css/amazeui.min.css"></link>
+  <link rel="stylesheet" href="../../static/assets/css/admin.css"></link>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，网站暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header" th:utext="${headerContent}">
+  <div class="am-topbar-brand">
+    <strong>创澳商务</strong> <small>管理系统</small>
+  </div>  
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas" th:utext="${sideBarContent}">
+    sidebar here
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content" id="contentDiv">
+	<div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户信息</strong> / <small>用户及权限信息</small></div>
+    </div>
+	<ul class="am-list am-list-static am-list-border">
+		<li>
+			说明：
+		</li>
+		<li>
+			<i class="am-icon-home am-icon-fw"></i>
+			<strong>用户组构成：</strong>1-9为一般用户，11-19为注册用户，21-29位开发者用户，31-39为交易者用户，41-49位管理员用户，51-59位超级管理员用户
+		</li>
+		<li>
+			<i class="am-icon-book am-icon-fw"></i>
+			<strong>账号权限：</strong>为二进制000三个位置构成的十进制整数，二进制最后一位代表在线监控，倒数第二位代表数据统计，倒数第三位代表反馈功能
+		</li>
+		<li>
+			<i class="am-icon-pencil am-icon-fw"></i>
+			<strong>EA权限：</strong>0代表无修改参数权限，1代表有修改权限
+		</li>
+	</ul>
+	
+	<div class="am-g">
+      <div class="am-u-sm-12 am-u-md-6">
+        <div class="am-btn-toolbar">
+          <div class="am-btn-group am-btn-group-xs">
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>            
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+          </div>
+        </div>
+      </div>      
+      <div class="am-u-sm-12 am-u-md-3">
+        <div class="am-input-group am-input-group-sm">
+          <input type="text" class="am-form-field"></input>
+          <span class="am-input-group-btn">
+            <button class="am-btn am-btn-default" type="button">搜索</button>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="am-g">
+		<div class="am-u-sm-12">
+			<form class="am-form">
+				<table class="am-table am-table-striped am-table-hover table-main">
+					<thead>
+						<tr>
+							<th class="table-check"><input type="checkbox" /></th>
+							<th class="table-id">ID</th>
+							<th class="table-title">用户名</th>
+							<th class="table-type">用户组</th>
+							<th class="table-description">账号权限</th>
+							<th class="table-description">EA权限</th>
+							<th class="table-set">操作</th>
+						</tr>
+					</thead>
+					<tbody th:remove="all-but-first">
+						<tr th:each="user : ${userPage.getContent()}" th:id="${user.getId()}">
+							<td><input type="checkbox" th:value="${user.getId()}"/></td>
+							<td th:text="${user.getId()}">1</td>
+							<td th:text="${user.getName()}"><a href="#">Business management</a></td>
+							<td th:text="${user.getGroup()}">31</td>
+							<td th:text="${user.getOwnAccounts()}">json</td>
+							<td th:text="${user.getAuthority()}">json</td>
+							<td>
+								<div class="am-btn-toolbar">
+								  <div class="am-btn-group am-btn-group-xs">
+									<button class="am-btn am-btn-default am-btn-xs am-text-secondary" th:value="${user.getId()}"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+									<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" th:value="${user.getId()}"><span class="am-icon-trash-o"></span> 删除</button>
+								  </div>
+								</div>
+							</td>
+						</tr> 
+						<tr>
+							<td><input type="checkbox" /></td>
+							<td>1</td>
+							<td><a href="#">Business management</a></td>
+							<td>31</td>
+							<td>json</td>
+							<td>json</td>
+							<td>
+								<div class="am-btn-toolbar">
+								  <div class="am-btn-group am-btn-group-xs">
+									<button class="am-btn am-btn-default am-btn-xs am-text-secondary" value="ID1111"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+									<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" value="ID1111"><span class="am-icon-trash-o"></span> 删除</button>
+								  </div>
+								</div>
+							</td>
+						</tr>            
+					</tbody>
+				</table>
+				<div class="am-cf">
+					每页<span id="dataSize" th:text="${userPage.getSize()}" class="">15</span>条，共<span id="totalNum" th:text="${userPage.getTotalElements()}" class="am-text-secondary">50</span>条记录
+					<input type="hidden" id="requestPage" value="0" th:value="${requestPage}" ></input>
+					<div class="am-fr">
+						<ul class="am-pagination" id="pageUL">
+							<li class="am-disabled"><a href="#">«</a></li>
+							<li class="am-active"><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">»</a></li>
+						</ul>
+					</div>
+				</div>				
+			</form>
+		</div>
+    </div>
+  </div>	
+  <!-- content end -->
+
+</div>
+
+<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+  <span class="am-icon-btn am-icon-th-list"></span>
+</a>
+
+<footer th:utext="${footerContent}">
+  footer here
+	<script src="../../static/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="../../static/assets/js/amazeui.min.js"></script>
+	<script src="../../static/assets/js/app.js"></script>
+</footer>
+	
+	<script src="../../static/assets/js/pageJs.js" th:src="@{/assets/js/pageJs.js}"></script>
+	<script type="text/javascript">		
+		$(document).ready(function(){		
+			var targetUrl = "/admin/user/ownAccounts";
+			getPageInfo(targetUrl);					
+		});		
+		
+		
+	</script>
+
+</body>
+</html>

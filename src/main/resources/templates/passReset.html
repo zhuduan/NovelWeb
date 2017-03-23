@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title>创澳商务 | 找回密码</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="alternate icon" type="image/png" href="../static/assets/i/favicon.png" th:href="@{http://www.mychuangao.com:8080/assets/i/favicon.png}"/>
+  <link href="http://cdn.bootcss.com/amazeui/2.7.1/css/amazeui.min.css" rel="stylesheet" />
+  <style>
+    .header {
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 200%;
+      color: #333;
+      margin-top: 30px;
+    }
+    .header p {
+      font-size: 14px;
+    }
+	
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="am-g">
+    <h1>创澳商务功能服务系统</h1>
+    <p>www.mychuangao.com
+		<br/>
+	   同我们一起打造你的个人理财计划
+	</p>
+  </div>
+  <hr />
+  
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    <h3 style="text-align:center;">重设密码 </h3>
+    
+    <form id="infoForm" class="am-form" method="post" action="/password/mail/newInfo" data-am-validator="#infoForm">
+      <label for="mail">新密码:</label>
+      <input type="password" name="pass1" id="pass1"  placeholder="请输入您的新密码" required="required" />
+      <br />
+	  <label for="mail">确认密码:</label>
+      <input type="password" name="pass2" id="pass2"  placeholder="请与上面输入的值一致" data-equal-to="#pass1" required="required" />
+      <br />
+	  <input type="hidden" name="userID" id="userID" th:value="${userID}" />
+      <div class="am-cf">
+        <input type="submit" name="" value="确认修改" class="am-btn am-btn-primary am-btn-sm am-fl"/>
+      </div>
+    </form>
+    <hr />
+    <p>© 2016 ChuangAo, Inc.</p>
+  </div>
+</div>
+	<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/amazeui/2.7.1/js/amazeui.min.js"></script>
+	<script src="../static/assets/js/app.js" th:src="@{http://www.mychuangao.com:8080/assets/js/app.js}"></script>	
+</body>
+</html>

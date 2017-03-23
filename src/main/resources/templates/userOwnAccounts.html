@@ -1,0 +1,144 @@
+﻿<!doctype html>
+<html class="no-js">
+<head th:utext="${headContent}">
+  <meta charset="utf-8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <title>chuangao trade Index</title>
+  
+  <link rel="stylesheet" href="../static/assets/css/amazeui.min.css"></link>
+  <link rel="stylesheet" href="../static/assets/css/admin.css"></link>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，网站暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header" th:utext="${headerContent}">
+  <div class="am-topbar-brand">
+    <strong>创澳商务</strong> <small>交易者系统</small>
+  </div>  
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas" th:utext="${sideBarContent}">
+    sidebar here
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content" id="contentDiv">
+	<div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">账号信息</strong> / <small>账号用户信息一览</small></div>
+    </div>
+	
+	<div class="am-g">
+		<div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+			<div class="am-panel am-panel-default">
+			  <div class="am-panel-bd">
+				<div class="am-g">
+				  <div class="am-u-md-4">
+					<img class="am-img-circle am-img-thumbnail" src="http://www.mychuangao.com:8080/logo.jpg" alt="logo"/>
+				  </div>
+				  <div class="am-u-md-8">
+					<p>欢迎您<a href="#" th:text="${userName}">mychuangao.com</a></p>
+					<table>					 
+					  <tbody>	
+						<tr>
+							<td>用户ID：</td>
+							<td th:text="${userID}">1</td>							
+						</tr>    
+						<tr>
+							<td>账户名：</td>
+							<td th:text="${userName}">zzz</td>							
+						</tr>   
+						<tr>
+							<td>用户组：</td>
+							<td th:text="${userType}">31</td>							
+						</tr> 	
+					  </tbody>
+					</table>
+				  </div>
+				</div>
+			  </div>
+			</div>
+
+			<div class="am-panel am-panel-default">
+			  <div class="am-panel-bd">
+				<div class="user-info">
+					<p>EA控制权限</p>	
+					<table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">						
+						<tbody th:remove="all-but-first">	
+							<tr th:each="ea : ${eaJson.keySet()}">
+								<td class="am-text-center">*</td>
+								<td th:text="${ea}">1234567</td>
+								<td th:switch="${eaJson.getInt(ea)}">
+									<span th:case="-1" class="am-text-danger">未开通</span>
+									<span th:case="0">默认</span>		
+									<span th:case="1" class="am-text-secondary">正常</span>											
+								</td>
+							</tr>
+							<tr>
+								<td class="am-text-center">*</td>
+								<td>EA_NAME</td>
+								<td>正常</td>							
+							</tr>    							
+						</tbody>
+					</table>
+				</div>	
+			  </div>
+			</div>
+		</div>
+
+		<div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+			<table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">		
+				<thead>
+					<tr>
+						<th></th>
+						<th>ID</th>
+						<th>在线监控</th>
+						<th>数据统计</th>
+						<th>操作反馈</th>
+					</tr>
+				</thead>
+				<tbody th:remove="all-but-first">	
+					<tr th:each="account : ${accountJson.keySet()}">
+						<td class="am-text-center">#</td>
+						<td th:text="${account}">1234567</td>
+						<td th:with="value=${accountJson.getInt(account)}" th:text="((${value}==1) or (${value}==3) or (${value}==5) or (${value}==7))? '正常开通':'未开通'"></td>
+						<td th:with="value=${accountJson.getInt(account)}" th:text="((${value}==2) or (${value}==3) or (${value}==6) or (${value}==7))? '正常开通':'未开通'"></td>
+						<td th:with="value=${accountJson.getInt(account)}" th:text="((${value}==4) or (${value}==5) or (${value}==6) or (${value}==7))? '正常开通':'未开通'"></td>
+					</tr>
+					<tr>
+						<td class="am-text-center">#</td>
+						<td>1234567</td>
+						<td>正常</td>	
+						<td>正常</td>	
+						<td>正常</td>	
+					</tr>    							
+				</tbody>
+			</table>	
+		</div>    
+      
+    </div>	
+	
+  </div>
+  <!-- content end -->
+
+</div>
+
+<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+  <span class="am-icon-btn am-icon-th-list"></span>
+</a>
+
+<footer th:utext="${footerContent}">
+  footer here
+	<script src="../../static/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="../../static/assets/js/amazeui.min.js"></script>
+	<script src="../../static/assets/js/app.js"></script>
+</footer>
+
+</body>
+</html>

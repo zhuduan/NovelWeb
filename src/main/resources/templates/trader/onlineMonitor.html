@@ -1,0 +1,221 @@
+﻿<!doctype html>
+<html class="no-js">
+<head th:utext="${headContent}">
+  <meta charset="utf-8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <title>chuangao background</title>
+  
+  <link rel="stylesheet" href="../../static/assets/css/amazeui.min.css"></link>
+  <link rel="stylesheet" href="../../static/assets/css/admin.css"></link>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，网站暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header" th:utext="${headerContent}">
+  <div class="am-topbar-brand">
+    <strong>创澳商务</strong> <small>交易者系统</small>
+  </div>  
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas" th:utext="${sideBarContent}">
+    sidebar here
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content" id="contentDiv">
+	<!-- dynamic load information here -->
+	<div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">在线监测</strong> / <small>监测进行中</small></div>
+    </div>
+
+    <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
+      <li><a href="#" class="am-text-secondary"><span class="am-icon-btn am-icon-file-text"></span><br/>总账户数<br/><span id="totalAccountsNum">20</span></a></li>
+      <li><a href="#" class="am-text-success"><span class="am-icon-btn am-icon-briefcase"></span><br/>跟单账户数<br/><span id="receiveAccountsNum">20</span></a></li>
+      <li><a href="#" class="am-text-success"><span class="am-icon-btn am-icon-recycle"></span><br/>喊单账户数<br/><span id="sendAccountsNum">20</span></a></li>
+      <li><a href="#" class="am-text-warning"><span class="am-icon-btn am-icon-user-md"></span><br/>未连接账户数<br/><span id="unknowAccountsNum">20</span></a></li>
+    </ul>
+	
+	<div class="am-g">
+      <div class="am-u-md-6">       
+        <div class="am-panel am-panel-default">
+          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">跟单账户监测<span class="am-icon-chevron-down am-fr" ></span></div>
+          <div id="collapse-panel-1" class="am-in">
+            <table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover" id="receiveTable">
+              <thead>
+				<tr>
+					<th class="am-text-center">#</th>
+					<th>账户号</th>
+					<th>当前状态</th>
+					<th>净值/余额</th>
+					<th>buy/sell/总手数</th>
+				</tr>
+			  </thead>
+			  <tbody th:remove="all-but-first">
+					<tr th:each="receiver : ${receiverMap}" th:id="${receiver.key}+'_2'">
+                     	<td class="am-text-center">*</td>
+                     	<td th:text="${receiver.key}">1234567</td>
+                    	<td th:switch="${receiver.value}">
+							<span th:case="-1">未开通</span>
+							<span th:case="0" class="am-text-warning">状态未知</span>
+							<span th:case="1" class="am-text-secondary">鉴权通过</span>
+							<span th:case="2" class="am-text-success">正常连接</span>
+							<span th:case="3" class="am-text-success">正在更新</span>
+							<span th:case="4" class="am-text-danger">交易商掉线</span>
+							<span th:case="5" class="am-text-secondary">反馈</span>
+							<span th:case="6" class="am-text-secondary">无订单</span>
+							<span th:case="7" class="am-text-danger">丢失心跳</span>
+						</td>				
+						<td>未统计</td>
+						<td>未统计</td>						
+                     	<td style="display:none">2</td>
+					</tr>
+					<tr id="Google Chrome">
+						<td class="am-text-center">1</td>
+						<td>Google Chrome</td>
+						<td>3,005</td>
+						<td style="display:none">2</td>
+					</tr> 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="am-u-md-6">
+        <div class="am-panel am-panel-default">
+          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-2'}">喊单账户监测<span class="am-icon-chevron-down am-fr" ></span></div>
+          <div id="collapse-panel-2" class="am-in">
+            <table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover" id="sendTable">
+              <thead>
+				<tr>
+					<th class="am-text-center">#</th>
+					<th>账户号</th>
+					<th>当前状态</th>
+					<th>净值/余额</th>
+					<th>buy/sell/总手数</th>
+				</tr>
+			  </thead>
+			  <tbody th:remove="all-but-first">
+					<tr th:each="sender : ${senderMap}" th:id="${sender.key}+'_1'">
+                     	<td class="am-text-center">*</td>
+                     	<td th:text="${sender.key}">1234567</td>
+                    	<td th:switch="${sender.value}">
+							<span th:case="-1">未开通</span>
+							<span th:case="0" class="am-text-warning">状态未知</span>
+							<span th:case="1" class="am-text-secondary">鉴权通过</span>
+							<span th:case="2" class="am-text-success">正常连接</span>
+							<span th:case="3" class="am-text-success">正在更新</span>
+							<span th:case="4" class="am-text-danger">交易商掉线</span>
+							<span th:case="5" class="am-text-secondary">反馈</span>
+							<span th:case="6" class="am-text-secondary">无订单</span>
+							<span th:case="7" class="am-text-danger">丢失心跳</span>
+						</td>
+						<td>未统计</td>
+						<td>未统计</td>						
+                     	<td style="display:none">1</td>
+					</tr>
+					<tr id="Google Chrome">
+						<td class="am-text-center">*</td>
+						<td>Google Chrome</td>
+						<td>3,005</td>
+						<td style="display:none">1</td>
+					</tr> 
+              </tbody>
+            </table>
+          </div>
+        </div>       
+      </div>
+    </div>
+	
+	<div class="am-g ">
+		<div class="am-u-md-12">
+			<div class="am-panel am-panel-default">
+			  <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">未连接账户信息<span class="am-icon-chevron-down am-fr" ></span></div>
+			  <div id="collapse-panel-3" class="am-in">
+				<table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover" id="unknowTable">
+				  <thead>
+					<tr>
+						<th class="am-text-center">#</th>
+						<th>账户号</th>
+						<th>当前状态</th>
+					</tr>
+				  </thead>
+				  <tbody th:remove="all-but-first">
+				    <tr th:each="unknow : ${unknowMap}" th:id="${unknow.key}+'_0'">
+                     	<td class="am-text-center">*</td>
+                     	<td th:text="${unknow.key}">1234567</td>
+                    	<td th:switch="${unknow.value}">
+							<span th:case="-1" class="am-text-danger">服务未开通</span>
+							<span th:case="0">未连接（服务器中无记录）</span>							
+						</td>
+						<td>
+							
+						</td>
+                     	<td style="display:none">0</td>
+					</tr>
+					<tr id="7767180">
+						<td class="am-text-center">*</td>
+						<td>7767180</td>
+						<td>暂无</td>
+						<td style="display:none">0</td>
+					</tr>      
+				  </tbody>
+				</table>
+			  </div>
+			</div>  
+		</div>
+	</div>
+	
+	
+	
+  </div>
+  <!-- content end -->
+
+</div>
+
+<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+  <span class="am-icon-btn am-icon-th-list"></span>
+</a>
+
+<footer th:utext="${footerContent}">
+  footer here
+	<script src="../../static/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="../../static/assets/js/amazeui.min.js"></script>
+	<script src="../../static/assets/js/app.js"></script>
+</footer>
+
+	
+	<script src="//cdn.bootcss.com/stomp.js/2.3.3/stomp.js"></script>
+	<script src="//cdn.bootcss.com/sockjs-client/1.1.1/sockjs.js"></script>
+
+
+	<script src="../../static/assets/js/wesocketFun.js" th:src="@{/assets/js/wesocketFun.js}"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){		
+			//dothings if needed
+			statisAccountsNum();
+			
+			setCurrentUserID();
+			connect();
+			
+			$(window).on('beforeunload',function() {
+				//return 'Are you sure ?';
+				disconnect();
+			});		
+		});
+		
+		
+		
+	</script>
+
+	
+</body>
+</html>

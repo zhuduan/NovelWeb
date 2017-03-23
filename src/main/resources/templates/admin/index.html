@@ -1,0 +1,131 @@
+﻿<!doctype html>
+<html class="no-js">
+<head th:utext="${headContent}">
+  <meta charset="utf-8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <title>chuangao trade Index</title>
+  
+  <link rel="stylesheet" href="../../static/assets/css/amazeui.min.css"></link>
+  <link rel="stylesheet" href="../../static/assets/css/admin.css"></link>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，网站暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header" th:utext="${headerContent}">
+  <div class="am-topbar-brand">
+    <strong>创澳商务</strong> <small>交易者系统</small>
+  </div>  
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas" th:utext="${sideBarContent}">
+    sidebar here
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content" id="contentDiv">
+	<div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>感谢使用本系统</small></div>
+    </div>
+	
+	<div class="am-g">
+      <div class="am-u-md-12">       
+        <div class="am-u-sm-12 am-u-sm-centered">
+			<h2>创澳商务后台管理系统</h2>
+			<p>welcome back, commander!</p>
+			<p>我们为您提供了最近系统的相关信息，请您查看并处理</p>			
+			<hr/>
+		</div>
+		<div class="am-u-sm-12 am-u-md-10 am-u-md-pull-2">
+			<h3>通用功能页</h3>
+			<ul>				
+				<li>
+					<i class="am-icon-home am-icon-fw"></i>
+					<strong>个人资料：</strong>主要供您修改自己的相关资料，如密码等
+				</li>
+				<li>
+					<i class="am-icon-home am-icon-fw"></i>
+					<strong>待处理事件：</strong>所有的审核、通知等信息都会出现在这里
+				</li>
+				<li>
+					<i class="am-icon-home am-icon-fw"></i>
+					<strong>帮助文档：</strong>这里将对所有功能进行详述，并详细描述所有的相关状态值
+				</li>
+			</ul>	
+			<hr/>
+			
+			<h3>用户管理</h3>
+			<ul>
+				<li>
+					<i class="am-icon-book am-icon-fw"></i>
+					<strong>用户权限：</strong>将呈现所有注册用户的信息，以及其操作EA、以及拥有账号的相关情况
+				</li>
+				<li>
+					<i class="am-icon-book am-icon-fw"></i>
+					<strong>用户资料：</strong>将呈现所有用户的资料，以及提供相应的处理接口（如通知、授权、修改资料、客户关怀等）
+				</li>
+			</ul>
+			<hr/>		
+
+			<h3>账号管理</h3>
+			<ul>
+				<li>
+					<i class="am-icon-pencil am-icon-fw"></i>
+					<strong>公共服务：</strong>所有适用于公共服务的账号相关信息会在这里呈现
+				</li>
+				<li>
+					<i class="am-icon-pencil am-icon-fw"></i>
+					<strong>EA管理：</strong>会显示所有EA相关的账号信息以及权限情况
+				</li>
+				<li>
+					<i class="am-icon-pencil am-icon-fw"></i>
+					<strong>工具管理：</strong>能上传或是下载所有的小工具（包括MT4小工具、其它小工具等）
+				</li>
+			</ul>
+			<hr/>		
+			
+			<h3>系统管理</h3>
+			<ul>
+				<li>
+					<i class="am-icon-gears am-icon-fw"></i>
+					<strong>访问数据：</strong>主要统计所有的运营用访问数据，如客户活跃度、PV等
+				</li>
+				<li>
+					<i class="am-icon-gears am-icon-fw"></i>
+					<strong>日志数据：</strong>主要显示error级别异常，便于及时发现问题原因
+				</li>
+				<li>
+					<i class="am-icon-gears am-icon-fw"></i>
+					<strong>用户类资源消耗：</strong>统计了以用户为单位的资源消耗信息，作为评估系统负载和收费的依据
+				</li>
+			</ul>	
+			<hr/>		
+			
+		</div>
+      </div>      
+    </div>	
+	
+  </div>
+  <!-- content end -->
+
+</div>
+
+<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+  <span class="am-icon-btn am-icon-th-list"></span>
+</a>
+
+<footer th:utext="${footerContent}">
+  footer here
+	<script src="../../static/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="../../static/assets/js/amazeui.min.js"></script>
+	<script src="../../static/assets/js/app.js"></script>
+</footer>
+
+</body>
+</html>
