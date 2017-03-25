@@ -9,12 +9,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ITEM")
 public class Item {
+	
     @Id
     @Column(name = "id", nullable = false, length = 30)
     private String id;
+    
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
+    
     public Item(String id, String name) {
         this.id = id;
         this.name = name;
